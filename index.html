@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SWAPI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function(){
+    $(".search_input").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#target tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    });
+    </script>
+
+    <script src="index.js"></script>
+</head>
+<body>
+    
+    <div class="box">
+        <div class="container-1">
+            <span class="icon"><i class="fa fa-search"></i></span>
+            <div class="searchbar">
+            <input type="search" id="search" class="search_input" placeholder="Search..."/>
+            <a href="#" class="search_icon"></a></div>
+        </div>
+      </div>
+
+    <div class="container" >
+    <table class="table">
+            <thead class="thead-light">
+                <th scope="col">name</th>
+                <th scope="col">height</th>
+                <th scope="col">mass</th>
+                <th scope="col">hair</th>
+                <th scope="col">skin</th>
+                <th scope="col">eye</th>
+                <th scope="col">birth</th>
+                <th scope="col">gender</th>
+            </thead>
+            <tbody id='target'>
+            	<tr></tr>
+            </tbody>
+    </table>
+    </div>
+
+
+
+
+    <script>
+    console.log(swapData)
+      swapData.results.forEach(function(el){
+
+        document.querySelector('#target').insertAdjacentHTML('beforeend',
+        '<td>'+el.name+'</td>'+'<td>'+el.height+'</td>'
+        +'<td>'+el.mass+'</td>'+'<td>'+el.hair_color+'</td>'
+        +'<td>'+el.skin_color+'</td>'+'<td>'+el.eye_color+'</td>'
+        +'<td>'+el.birth_year+'</td>'+'<td>'+el.gender+'</td>'
+        )
+      });
+      
+      </script>
+    
+</body>
+</html>
